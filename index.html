@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PawLead · smart CPA & monetization for dog offers</title>
-  <!-- Font Awesome 6 (free) for icons (optional) -->
+  <!-- Font Awesome 6 (free) for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Popunder Scripts -->
+  <script src="https://evacuateenclose.com/a7/cd/2d/a7cd2da0826a420437a88c25da8a7620.js"></script>
+  <script src="https://evacuateenclose.com/94/69/33/946933da4c80cf709749a5967a60d1cd.js"></script>
   <style>
     * {
       margin: 0;
@@ -181,12 +184,13 @@
       background: linear-gradient(110deg, transparent 30%, rgba(245, 225, 200, 0.2));
     }
 
-    /* brands section */
+    /* brands section - ANIMATED LOGOS WITH LINKS */
     .brands {
       padding: 40px 60px;
       border-top: 1px solid #e2eef3;
       border-bottom: 1px solid #e2eef3;
       background: #fbfeff;
+      overflow: hidden;
     }
 
     .brands p {
@@ -206,12 +210,52 @@
       gap: 20px;
     }
 
+    .brand-logos a {
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      animation: logoFloat 3s ease-in-out infinite;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: linear-gradient(145deg, #ffffff, #f0f8ff);
+      box-shadow: 0 10px 20px -10px rgba(0,80,100,0.2);
+    }
+
+    .brand-logos a:nth-child(1) { animation-delay: 0s; }
+    .brand-logos a:nth-child(2) { animation-delay: 0.2s; }
+    .brand-logos a:nth-child(3) { animation-delay: 0.4s; }
+    .brand-logos a:nth-child(4) { animation-delay: 0.6s; }
+    .brand-logos a:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes logoFloat {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 10px 20px -10px rgba(0,80,100,0.2);
+      }
+      50% {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 30px -10px rgba(255,153,0,0.3);
+      }
+    }
+
+    .brand-logos a:hover {
+      animation-play-state: paused;
+      transform: scale(1.1);
+      background: linear-gradient(145deg, #ffffff, #fff3e0);
+      box-shadow: 0 15px 30px -5px #ff9900;
+    }
+
     .brand-logos span {
       font-size: 1.4rem;
       font-weight: 600;
-      color: #7f9aa8;
-      opacity: 0.7;
-      font-family: 'Times New Roman', serif;
+      color: #1a4b5c;
+      opacity: 0.9;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.3s;
+    }
+
+    .brand-logos a:hover span {
+      color: #ff9900;
     }
 
     /* value proposition */
@@ -320,7 +364,7 @@
       font-size: 1.05rem;
     }
 
-    /* how it works */
+    /* how it works - ANIMATED CARDS WITH LINKS */
     .how-it-works {
       padding: 100px 60px;
       background: white;
@@ -336,35 +380,106 @@
     .step {
       flex: 1;
       text-align: center;
-      padding: 30px;
-      background: #fafdff;
+      padding: 40px 30px;
+      background: linear-gradient(145deg, #ffffff, #f5fafd);
       border-radius: 60px;
       border: 1px solid #d6e8f0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      box-shadow: 0 15px 30px -10px rgba(0,80,100,0.15);
+    }
+
+    /* Continuous animation */
+    .step {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .step:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .step:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    .step:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+        box-shadow: 0 15px 30px -10px rgba(0,80,100,0.15);
+      }
+      50% {
+        transform: translateY(-12px);
+        box-shadow: 0 30px 40px -10px rgba(0,120,150,0.25);
+      }
+    }
+
+    /* Glow effect on hover */
+    .step:hover {
+      animation-play-state: paused;
+      transform: scale(1.02) translateY(-5px);
+      border-color: #ff9900;
+      box-shadow: 0 30px 50px -15px #ff990080;
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(255,153,0,0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .step:hover::before {
+      opacity: 1;
     }
 
     .step-number {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       background: #1e4f60;
       color: white;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      border-radius: 30px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 25px;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px -5px #1e4f60;
+    }
+
+    .step:hover .step-number {
+      background: #ff9900;
+      transform: rotate(360deg);
+      box-shadow: 0 15px 30px -5px #ff9900;
     }
 
     .step h4 {
       font-size: 1.8rem;
       margin-bottom: 15px;
       color: #153f4d;
+      transition: color 0.3s;
+    }
+
+    .step:hover h4 {
+      color: #ff9900;
     }
 
     .step p {
       color: #3a5f6e;
       font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     /* testimonials */
@@ -546,86 +661,123 @@
       transform: scale(1.05);
     }
 
-    /* ========== FOOTER (with custom social buttons) ========== */
+    /* ========== AMAZON-STYLE FOOTER ========== */
     .footer {
-      padding: 60px 60px 30px;
-      background: #0c2c38;
-      color: #cbdbe6;
+      background: #232f3e;
+      color: #dddddd;
+      padding: 0;
+      font-size: 0.9rem;
     }
 
-    .footer-grid {
+    .footer-services {
+      background: #37475a;
+      padding: 30px 60px;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 50px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      border-bottom: 1px solid #3a4a5a;
     }
 
-    .footer-col p {
-      margin: 20px 0 25px;
-      line-height: 1.6;
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #ffffff;
     }
 
-    .footer-col h4 {
-      color: white;
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    .service-item i {
+      font-size: 2rem;
+      color: #ff9900;
+    }
+
+    .service-item span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .footer-main {
+      padding: 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      border-bottom: 1px solid #3a4a5a;
+    }
+
+    .footer-column h4 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
       font-weight: 600;
     }
 
-    .footer-col a {
+    .footer-column a {
       display: block;
-      color: #b3d0dc;
+      color: #dddddd;
       text-decoration: none;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
 
-    .footer-col a:hover {
-      color: white;
+    .footer-column a:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
-    /* custom social buttons container (exactly as requested) */
-    .social-buttons-wrapper {
+    .social-footer {
+      background: #232f3e;
+      padding: 30px 60px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 25px 0 10px;
+      justify-content: center;
+      gap: 30px;
+      border-bottom: 1px solid #3a4a5a;
     }
 
-    .social-btn {
-      border: none;
-      padding: 10px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: white;
+    .social-footer a {
+      color: #ffffff;
+      font-size: 1.5rem;
+      transition: transform 0.2s;
     }
 
-    .social-btn.fb { background: #1877F2; }
-    .social-btn.tw { background: #000000; } /* X (twitter) */
-    .social-btn.ig { background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5); }
-    .social-btn.wa { background: #25D366; }
-    .social-btn.tg { background: #0088cc; }
-    .social-btn.dc { background: #5865F2; } /* Discord */
-
-    .social-btn:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.1);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    .social-footer a:hover {
+      transform: scale(1.2);
+      color: #ff9900;
     }
 
-    .copyright {
+    .footer-copyright {
+      background: #131a22;
+      padding: 30px 60px;
       text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid #255a6b;
-      color: #97b7c7;
+      color: #999999;
+    }
+
+    .copyright-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .copyright-links a {
+      color: #999999;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .copyright-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .copyright-text {
+      font-size: 0.85rem;
+      color: #999999;
+    }
+
+    .copyright-text span {
+      color: #ff9900;
     }
 
     /* responsive */
@@ -633,7 +785,9 @@
       .hero { grid-template-columns: 1fr; }
       .hero-image { min-height: 500px; }
       .resources-grid { grid-template-columns: repeat(3,1fr); }
-      .footer-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-services { grid-template-columns: repeat(2,1fr); }
+      .footer-main { grid-template-columns: repeat(2,1fr); }
+      .steps { flex-direction: column; }
     }
 
     @media (max-width: 800px) {
@@ -644,11 +798,15 @@
       .steps { flex-direction: column; }
       .testimonial-grid { grid-template-columns: 1fr; }
       .resources-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-services { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr; }
+      .brand-logos { justify-content: center; }
     }
 
     @media (max-width: 550px) {
       .resources-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .copyright-links { flex-direction: column; gap: 10px; }
+      .brand-logos { flex-direction: column; }
     }
   </style>
 </head>
@@ -692,15 +850,25 @@
     <div class="hero-image"></div>
   </section>
 
-  <!-- brands = network names -->
+  <!-- brands = network names - ANIMATED LOGOS WITH YOUR LINKS -->
   <section class="brands">
     <p>TRUSTED BY LEADING CPA NETWORKS</p>
     <div class="brand-logos">
-      <span>MAXBOUNTY</span>
-      <span>CPALEAD</span>
-      <span>CPAGRIP</span>
-      <span>ADSTERRA</span>
-      <span>ADWORK</span>
+      <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">
+        <span>MAXBOUNTY</span>
+      </a>
+      <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">
+        <span>CPALEAD</span>
+      </a>
+      <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">
+        <span>CPAGRIP</span>
+      </a>
+      <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">
+        <span>ADSTERRA</span>
+      </a>
+      <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">
+        <span>ADWORK</span>
+      </a>
     </div>
   </section>
 
@@ -763,26 +931,31 @@
     </div>
   </section>
 
-  <!-- how it works (monetization flow) -->
+  <!-- how it works - ANIMATED CARDS WITH LINKS -->
   <section class="how-it-works">
     <div class="section-label">SIMPLE 3‑STEP MONETIZATION</div>
     <h2 style="font-size: 3rem;">From traffic to revenue</h2>
     <div class="steps">
-      <div class="step">
+      <!-- Card 1 - Choose networks -->
+      <a href="https://shorturl.at/M4CIB" class="step" target="_blank" rel="noopener noreferrer">
         <div class="step-number">1</div>
         <h4>Choose networks</h4>
         <p>Connect MaxBounty, CPALead, CPAGrip, Adsterra or use our default smartlink.</p>
-      </div>
-      <div class="step">
+      </a>
+      
+      <!-- Card 2 - Embed smart links -->
+      <a href="https://shorturl.at/adgF9" class="step" target="_blank" rel="noopener noreferrer">
         <div class="step-number">2</div>
         <h4>Embed smart links</h4>
         <p>Replace any resource link with your CPA offer or content locker.</p>
-      </div>
-      <div class="step">
+      </a>
+      
+      <!-- Card 3 - Watch conversions -->
+      <a href="https://tinyurl.com/37m5usuc" class="step" target="_blank" rel="noopener noreferrer">
         <div class="step-number">3</div>
         <h4>Watch conversions</h4>
         <p>USA/CAN visitors complete surveys, email submits → you earn.</p>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -814,89 +987,89 @@
     </div>
   </section>
 
-  <!-- resources = 12 smart links / offers (directly monetizable) - FIXED VERSION WITH WORKING LINKS -->
+  <!-- resources = 12 smart links / offers (directly monetizable) -->
   <section class="resources">
     <div class="section-label">CPA SMART LINKS</div>
     <h2 style="font-size: 3rem;">14 high‑converting pet offers</h2>
     <div class="resources-grid">
-      <!-- 1. Adsterra Link 1 (Dog Food) - FIXED with proper link structure -->
+      <!-- 1. Adsterra Link 1 (Dog Food) -->
       <div class="resource-card">
         <div class="resource-icon">🍖</div>
         <h4>Dog food sampler</h4>
         <p>Free trial (USA/CAN) – Adsterra #1.</p>
         <a href="https://evacuateenclose.com/jn2j78yr4?key=d80685e7bdb984debc2d5ced66a4feb7" class="resource-link" target="_blank" rel="noopener noreferrer">Get smartlink →</a>
       </div>
-      <!-- 2. Adsterra Link 2 (Pet Insurance) - FIXED -->
+      <!-- 2. Adsterra Link 2 (Pet Insurance) -->
       <div class="resource-card">
         <div class="resource-icon">🩺</div>
         <h4>Pet insurance</h4>
         <p>Zip submit, high backend (Adsterra).</p>
         <a href="https://evacuateenclose.com/nevm4qh5w?key=17534175c311d8ef23b5209912922cac" class="resource-link" target="_blank" rel="noopener noreferrer">Lock now →</a>
       </div>
-      <!-- 3. Adsterra Link 3 (Training) - FIXED -->
+      <!-- 3. Adsterra Link 3 (Training) -->
       <div class="resource-card">
         <div class="resource-icon">🐕‍🦺</div>
         <h4>Training course</h4>
         <p>Email submit (Adsterra).</p>
         <a href="https://evacuateenclose.com/ppmzj38fr?key=d68ba14014205494beddf4e50e87b02e" class="resource-link" target="_blank" rel="noopener noreferrer">Convert →</a>
       </div>
-      <!-- 4. CPAGrip Link 1 (CBD for Dogs) - FIXED -->
+      <!-- 4. CPAGrip Link 1 (CBD for Dogs) -->
       <div class="resource-card">
         <div class="resource-icon">🧘</div>
         <h4>CBD for dogs</h4>
         <p>Health survey (CPAGrip).</p>
         <a href="https://playabledownload.com/1880401" class="resource-link" target="_blank" rel="noopener noreferrer">Smartlink →</a>
       </div>
-      <!-- 5. CPAGrip Link 2 (Chew Toys) - FIXED -->
+      <!-- 5. CPAGrip Link 2 (Chew Toys) -->
       <div class="resource-card">
         <div class="resource-icon">🦴</div>
         <h4>Chew toys</h4>
         <p>Email + zip (CPAGrip).</p>
         <a href="https://playabledownload.com/1880401" class="resource-link" target="_blank" rel="noopener noreferrer">Use link →</a>
       </div>
-      <!-- 6. 24/7 vet chat - Add your link here -->
+      <!-- 6. 24/7 vet chat -->
       <div class="resource-card">
         <div class="resource-icon">🏥</div>
         <h4>24/7 vet chat</h4>
         <p>Leadgen – CrakRevenue.</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Gate content →</a>
       </div>
-      <!-- 7. Grooming kit - Add your link here -->
+      <!-- 7. Grooming kit -->
       <div class="resource-card">
         <div class="resource-icon">🧼</div>
         <h4>Grooming kit</h4>
         <p>Free+shipping (MaxBounty).</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Rotate →</a>
       </div>
-      <!-- 8. Adopt a pet - Add your link here -->
+      <!-- 8. Adopt a pet -->
       <div class="resource-card">
         <div class="resource-icon">📸</div>
         <h4>Adopt a pet</h4>
         <p>Donation/email (CPALead).</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Smartlink →</a>
       </div>
-      <!-- 9. Travel carrier - Add your link here -->
+      <!-- 9. Travel carrier -->
       <div class="resource-card">
         <div class="resource-icon">🚗</div>
         <h4>Travel carrier</h4>
         <p>Product voucher (CPAGrip).</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Lock →</a>
       </div>
-      <!-- 10. Puzzle toys - Add your link here -->
+      <!-- 10. Puzzle toys -->
       <div class="resource-card">
         <div class="resource-icon">🧠</div>
         <h4>Puzzle toys</h4>
         <p>Content locker (AdWork).</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Earn →</a>
       </div>
-      <!-- 11. Breed club - Add your link here -->
+      <!-- 11. Breed club -->
       <div class="resource-card">
         <div class="resource-icon">👥</div>
         <h4>Breed club</h4>
         <p>Email/zip (Adsterra).</p>
         <a href="#" class="resource-link" target="_blank" rel="noopener noreferrer">Use link →</a>
       </div>
-      <!-- 12. Health tracker - Add your link here -->
+      <!-- 12. Health tracker -->
       <div class="resource-card">
         <div class="resource-icon">📋</div>
         <h4>Health tracker</h4>
@@ -924,46 +1097,97 @@
     <a href="#" class="cta-white">Get your smartlink hub →</a>
   </section>
 
-  <!-- footer with EXACT social buttons from request -->
+  <!-- AMAZON-STYLE FOOTER - ALL LINKS ADDED -->
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3 style="color:white; font-size:1.8rem;">🐾 PawLead</h3>
-        <p>Premium monetization for dog & pet vertical. Trusted by affiliates sending USA/CAN traffic.</p>
-        
-        <!-- exactly the buttons you provided, with working onclick links -->
-        <div class="social-buttons-wrapper">
-          <button class="social-btn fb" onclick="window.open('https://facebook.com/share/18WTkBPSMs/', '_blank')">🔵 Facebook</button>
-          <button class="social-btn tw" onclick="window.open('https://x.com/i/status/2026676381065883668', '_blank')">🐦 Twitter/X</button>
-          <button class="social-btn ig" onclick="window.open('https://www.instagram.com/usanightvibes?utm_source=qr&igsh=ajVoenBjc3ZkcHdx', '_blank')">📸 Instagram</button>
-          <button class="social-btn wa" onclick="window.open('https://chat.whatsapp.com/I8DDdSTcaSOIvE2P2q4C6i?mode=hq2tcla', '_blank')">💬 WhatsApp</button>
-          <button class="social-btn tg" onclick="window.open('https://t.me/MdUzzal_Deals2026', '_blank')">✈️ Telegram</button>
-          <button class="social-btn dc" onclick="window.open('https://discord.com/users/nnn_u3ula', '_blank')">💬 Discord</button>
-        </div>
+    <!-- Services Section -->
+    <div class="footer-services">
+      <div class="service-item">
+        <i class="fas fa-dog"></i>
+        <span>Pet Affiliate Programs</span>
       </div>
-      <div class="footer-col">
-        <h4>Networks</h4>
-        <a href="#">MaxBounty</a>
-        <a href="#">CPALead</a>
-        <a href="#">CPAGrip</a>
-        <a href="#">Adsterra</a>
-        <a href="#">AdWork</a>
+      <div class="service-item">
+        <i class="fas fa-chart-line"></i>
+        <span>High EPC Offers</span>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Affiliate terms</a>
-        <a href="#">Contact</a>
+      <div class="service-item">
+        <i class="fas fa-globe-americas"></i>
+        <span>USA/CAN Optimized</span>
       </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#">Smartlink guide</a>
-        <a href="#">Geo‑targeting</a>
-        <a href="#">CPA funnels</a>
+      <div class="service-item">
+        <i class="fas fa-clock"></i>
+        <span>24/7 Smartlinks</span>
       </div>
     </div>
-    <div class="copyright">
-      © 2026 PawLead · For affiliate marketers using MaxBounty, CPALead, CPAGrip, Adsterra, AdWork & more.
+
+    <!-- Main Footer Columns -->
+    <div class="footer-main">
+      <!-- Networks Column -->
+      <div class="footer-column">
+        <h4>Networks</h4>
+        <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">MaxBounty</a>
+        <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">CPALead</a>
+        <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">CPAGrip</a>
+        <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">Adsterra</a>
+        <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">AdWork</a>
+        <a href="https://tinyurl.com/2jyxcmsa" target="_blank" rel="noopener noreferrer">CrakRevenue</a>
+      </div>
+      
+      <!-- Resources Column -->
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">Smartlink Guide</a>
+        <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">Geo-Targeting</a>
+        <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">CPA Funnels</a>
+        <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">Content Locking</a>
+        <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">Email Submits</a>
+        <a href="https://tinyurl.com/2jyxcmsa" target="_blank" rel="noopener noreferrer">Smartlinks</a>
+      </div>
+      
+      <!-- Company Column -->
+      <div class="footer-column">
+        <h4>Company</h4>
+        <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">Affiliate Terms</a>
+        <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+        <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">Contact</a>
+        <a href="https://tinyurl.com/2jyxcmsa" target="_blank" rel="noopener noreferrer">Legal</a>
+      </div>
+      
+      <!-- Community Column -->
+      <div class="footer-column">
+        <h4>Community</h4>
+        <a href="https://tinyurl.com/2jyxcmsa" target="_blank" rel="noopener noreferrer">Forums</a>
+        <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">Events</a>
+        <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">Local Clubs</a>
+        <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">Blog</a>
+        <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">Support</a>
+        <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+    </div>
+
+    <!-- Social Media Row -->
+    <div class="social-footer">
+      <a href="https://facebook.com/share/18WTkBPSMs/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://x.com/i/status/2026676381065883668" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/usanightvibes?utm_source=qr&igsh=ajVoenBjc3ZkcHdx" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://chat.whatsapp.com/I8DDdSTcaSOIvE2P2q4C6i?mode=hq2tcla" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://t.me/MdUzzal_Deals2026" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://discord.com/users/nnn_u3ula" target="_blank"><i class="fab fa-discord"></i></a>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-copyright">
+      <div class="copyright-links">
+        <a href="https://shorturl.at/M4CIB" target="_blank" rel="noopener noreferrer">Conditions of Use & Sale</a>
+        <a href="https://shorturl.at/adgF9" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+        <a href="https://shorturl.at/chQMB" target="_blank" rel="noopener noreferrer">Imprint</a>
+        <a href="https://tinyurl.com/37m5usuc" target="_blank" rel="noopener noreferrer">Cookies Notice</a>
+        <a href="https://tinyurl.com/mr3jy9cw" target="_blank" rel="noopener noreferrer">Interest-Based Ads Notice</a>
+      </div>
+      <div class="copyright-text">
+        © 2026, <span>PawLead.com</span>, Inc. or its affiliates. All rights reserved.
+      </div>
     </div>
   </footer>
 </body>
