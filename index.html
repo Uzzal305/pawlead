@@ -8,111 +8,11 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
-  <!-- ===== AUTO MONEY SYSTEM ===== -->
-  <!-- 1. Adsterra Popunder (automatic) -->
+  <!-- Adsterra Popunder (loads properly) -->
   <script type='text/javascript' src='//pl25963438.effectiveratecpm.com/0b/c5/80/0bc580c267e3ffbed890a2beb8eae5a4.js'></script>
   
-  <!-- 2. USA Visitor Redirect Script -->
-  <script>
-    (function() {
-      // USA Visitor Detection & Redirect
-      var userCountry = '';
-      
-      // Try to get country from multiple sources
-      fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-          userCountry = data.country_code;
-          console.log('Visitor country:', userCountry);
-          
-          // USA redirect (automatic)
-          if (userCountry === 'US') {
-            window.location.href = 'https://www.maxbounty.com/apply.cfm?refid=76238';
-          }
-        })
-        .catch(error => {
-          console.log('IP detection failed, using fallback');
-          // Fallback: check browser language (approx)
-          const lang = navigator.language || navigator.userLanguage;
-          if (lang && lang.includes('en-US')) {
-            window.location.href = 'https://www.maxbounty.com/apply.cfm?refid=76238';
-          }
-        });
-      
-      // Also check via alternative API
-      setTimeout(function() {
-        fetch('https://ipinfo.io/json')
-          .then(response => response.json())
-          .catch(() => {})
-          .then(data => {
-            if (data && data.country === 'US') {
-              window.location.href = 'https://www.maxbounty.com/apply.cfm?refid=76238';
-            }
-          });
-      }, 1000);
-    })();
-  </script>
-  
-  <!-- 3. CPA Smartlink Rotator (multiple networks) -->
-  <script>
-    // CPA Smartlink Configuration
-    var CPA_LINKS = [
-      {
-        name: 'MaxBounty',
-        url: 'https://www.maxbounty.com/apply.cfm?refid=76238',
-        weight: 40 // 40% traffic
-      },
-      {
-        name: 'CPAGrip',
-        url: 'https://www.cpagrip.com/signup.php?ref=954093',
-        weight: 30 // 30% traffic
-      },
-      {
-        name: 'Adsterra',
-        url: 'https://publishers.adsterra.com/referral/4C4Aq89P8t',
-        weight: 20 // 20% traffic
-      },
-      {
-        name: 'CPALead',
-        url: 'https://www.cpalead.com/publisher/signup.php',
-        weight: 10 // 10% traffic
-      }
-    ];
-    
-    // Smartlink rotator function
-    function getSmartlink() {
-      var totalWeight = CPA_LINKS.reduce((sum, link) => sum + link.weight, 0);
-      var random = Math.random() * totalWeight;
-      var cumulativeWeight = 0;
-      
-      for (var i = 0; i < CPA_LINKS.length; i++) {
-        cumulativeWeight += CPA_LINKS[i].weight;
-        if (random < cumulativeWeight) {
-          return CPA_LINKS[i].url;
-        }
-      }
-      return CPA_LINKS[0].url; // fallback
-    }
-    
-    // Function to handle button clicks with smartlink
-    window.handleOfferClick = function(offerName) {
-      var smartlink = getSmartlink();
-      console.log('Redirecting to:', smartlink);
-      window.open(smartlink, '_blank');
-      return false;
-    };
-    
-    // Auto redirect for special links (optional)
-    window.autoRedirect = function(delay) {
-      setTimeout(function() {
-        var smartlink = getSmartlink();
-        window.location.href = smartlink;
-      }, delay || 5000);
-    };
-  </script>
-  
   <style>
-    /* ===== RESPONSIVE STYLES ===== */
+    /* reset & base */
     * {
       margin: 0;
       padding: 0;
@@ -185,10 +85,7 @@
       font-size: 0.85rem;
       white-space: nowrap;
     }
-    .btn-outline:hover {
-      background: #1a4b5c;
-      color: white !important;
-    }
+    .btn-outline:hover { background: #1a4b5c; color: white !important; }
 
     /* hero */
     .hero {
@@ -226,7 +123,6 @@
       font-size: 1rem;
       color: #3e6473;
       margin-bottom: 24px;
-      line-height: 1.5;
     }
     @media (min-width: 768px) { .hero-subhead { font-size: 1.1rem; max-width: 500px; } }
 
@@ -245,8 +141,6 @@
       font-weight: 600;
       font-size: 1rem;
       text-align: center;
-      cursor: pointer;
-      border: none;
       display: inline-block;
     }
     
@@ -262,18 +156,6 @@
       border: 1.5px solid #b3d3df;
     }
     .btn-secondary:hover { border-color: #1e4f60; background: #f0f8fc; }
-
-    /* smartlink buttons - specially styled */
-    .smartlink-btn {
-      background: #ff9900;
-      color: #1a2e3b;
-      font-weight: 700;
-      box-shadow: 0 5px 15px rgba(255,153,0,0.3);
-    }
-    .smartlink-btn:hover {
-      background: #e68900;
-      transform: translateY(-2px);
-    }
 
     .stats {
       display: flex;
@@ -295,7 +177,7 @@
       font-weight: 500;
     }
 
-    /* নতুন ইমেজ যোগ করা হয়েছে - আপনার দেওয়া লিংক থেকে */
+    /* নতুন ইমেজ */
     .hero-image {
       min-height: 240px;
       background: url('https://i.ibb.co.com/B2TpS5L4/20250215-171651.jpg') center/cover;
@@ -400,13 +282,8 @@
       border-radius: 24px;
       transition: all 0.3s;
       text-align: center;
-      cursor: pointer;
     }
-    .value-card:hover { 
-      background: #f1f8fc; 
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px -5px rgba(255,153,0,0.2);
-    }
+    .value-card:hover { background: #f1f8fc; transform: translateY(-4px); }
     .value-icon { font-size: 2.5rem; margin-bottom: 16px; }
     .value-card h3 { font-size: 1.4rem; font-weight: 600; color: #1e4f60; margin-bottom: 8px; }
     .value-card p { color: #3a5f6e; font-size: 0.95rem; }
@@ -429,12 +306,6 @@
       background: white;
       border-radius: 20px;
       box-shadow: 0 10px 25px -15px #b0cdda;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .feature-item:hover {
-      box-shadow: 0 15px 30px -10px #ff9900;
-      border-left: 3px solid #ff9900;
     }
     @media (min-width: 480px) { .feature-item { flex-direction: row; } }
 
@@ -471,7 +342,6 @@
       color: inherit;
       display: block;
       transition: all 0.3s;
-      cursor: pointer;
     }
     .step:hover {
       border-color: #ff9900;
@@ -482,19 +352,38 @@
       background: #1e4f60;
       color: white;
       font-size: 1.6rem;
-      font-weight: 700;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 16px;
-      transition: all 0.3s;
     }
     .step:hover .step-number { background: #ff9900; }
     .step h4 { font-size: 1.4rem; margin-bottom: 8px; color: #153f4d; }
     .step p { color: #3a5f6e; font-size: 0.9rem; }
 
-    /* resources - smartlink cards */
+    /* testimonials */
+    .testimonials { background: #f3f9ff; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 30px;
+    }
+    @media (min-width: 640px) { .testimonial-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .testimonial-card {
+      background: white;
+      padding: 28px;
+      border-radius: 28px;
+      box-shadow: 0 20px 30px -20px #8fb5c7;
+    }
+    .testimonial-card p { font-size: 1rem; font-style: italic; margin: 16px 0; }
+    .author { display: flex; align-items: center; gap: 12px; }
+    .author-img { width: 44px; height: 44px; background: #cbdbe6; border-radius: 50%; }
+    .author h5 { font-size: 1rem; color: #1a4b5c; }
+
+    /* resources */
     .resources-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -510,26 +399,28 @@
       border: 1px solid #d9eaf2;
       border-radius: 20px;
       padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .resource-card:hover {
-      border-color: #ff9900;
-      box-shadow: 0 15px 25px -10px rgba(255,153,0,0.3);
-      transform: translateY(-3px);
     }
     .resource-icon { font-size: 2rem; margin-bottom: 12px; }
     .resource-card h4 { font-size: 1.1rem; font-weight: 700; color: #153f4d; margin-bottom: 8px; }
     .resource-card p { color: #3e6473; font-size: 0.85rem; margin-bottom: 16px; }
     .resource-link {
-      display: inline-block;
       color: #c45b2c;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.85rem;
-      border-bottom: 2px solid transparent;
     }
-    .resource-card:hover .resource-link { border-bottom-color: #c45b2c; }
+
+    /* faq */
+    .faq { background: #f3f9ff; }
+    .faq-grid { max-width: 800px; margin: 30px auto 0; }
+    .faq-item {
+      background: white;
+      padding: 20px;
+      border-radius: 24px;
+      margin-bottom: 12px;
+    }
+    .faq-item h4 { font-size: 1.1rem; color: #153f4d; margin-bottom: 6px; }
+    .faq-item p { color: #3a5f6e; font-size: 0.9rem; }
 
     /* cta */
     .cta-section {
@@ -547,10 +438,8 @@
       border-radius: 60px;
       font-weight: 700;
       text-decoration: none;
-      transition: transform 0.2s;
-      cursor: pointer;
     }
-    .cta-white:hover { transform: scale(1.05); background: #ff9900; color: white; }
+    .cta-white:hover { background: #ff9900; color: white; }
 
     /* footer */
     .footer { background: #232f3e; color: #ddd; font-size: 0.8rem; }
@@ -560,7 +449,6 @@
       display: grid;
       grid-template-columns: repeat(2,1fr);
       gap: 12px;
-      border-bottom: 1px solid #3a4a5a;
     }
     @media (min-width: 768px) { .footer-services { grid-template-columns: repeat(4,1fr); } }
 
@@ -587,7 +475,7 @@
       gap: 18px;
     }
     .social-footer a { color: #fff; font-size: 1.3rem; }
-    .social-footer a:hover { color: #ff9900; transform: scale(1.2); }
+    .social-footer a:hover { color: #ff9900; }
 
     .footer-copyright {
       background: #131a22;
@@ -595,55 +483,39 @@
       text-align: center;
       color: #999;
     }
+    .copyright-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 480px) { .copyright-links { flex-direction: row; justify-content: center; } }
+    .copyright-links a { color: #999; text-decoration: none; font-size: 0.75rem; }
     .copyright-text span { color: #ff9900; }
-    
-    /* notification banner */
-    .money-notice {
-      background: linear-gradient(90deg, #ff9900, #ff5500);
-      color: white;
-      text-align: center;
-      padding: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.9; background: linear-gradient(90deg, #ff5500, #ff9900); }
-      100% { opacity: 1; }
-    }
   </style>
 </head>
 <body>
-  <!-- Auto Money Notice -->
-  <div class="money-notice">
-    <i class="fas fa-dollar-sign"></i> AUTO MONEY MODE ACTIVE • SMARTLINK ROTATOR • USA REDIRECT • POPUNDER LOADED
-  </div>
 
   <!-- navigation -->
   <nav class="navbar">
-    <div class="logo">🐾 <span>PawLead</span> · auto money</div>
+    <div class="logo">🐾 <span>PawLead</span> · monetize</div>
     <div class="nav-links">
-      <a href="#" onclick="handleOfferClick('home'); return false;">Home</a>
-      <a href="#" onclick="handleOfferClick('resources'); return false;">Resources</a>
-      <a href="#" onclick="handleOfferClick('community'); return false;">Community</a>
-      <a href="#" onclick="handleOfferClick('experts'); return false;">Experts</a>
-      <a href="#" class="btn-outline" onclick="handleOfferClick('join'); return false;">Join Free</a>
+      <a href="#">Home</a>
+      <a href="#">Resources</a>
+      <a href="#">Community</a>
+      <a href="#">Experts</a>
+      <a href="#" class="btn-outline">Join Free</a>
     </div>
   </nav>
 
-  <!-- hero section with updated image -->
+  <!-- hero section (new image added) -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Turn <span class="hero-highlight">dog lovers</span> into <span style="color:#ff9900;">auto money</span></h1>
-      <p class="hero-subhead">Adsterra Popunder • CPA Smartlink Rotator • USA Redirect — All Automatic</p>
+      <h1>Turn <span class="hero-highlight">dog lovers</span> into high‑value CPA conversions</h1>
+      <p class="hero-subhead">MaxBounty • CrakRevenue • CPALead • AdWork • all smart links — built for USA/CAN traffic.</p>
       <div class="cta-group">
-        <a href="#" class="btn-primary smartlink-btn" onclick="handleOfferClick('explore'); return false;">
-          <i class="fas fa-bolt"></i> Auto Explore Offers
-        </a>
-        <a href="#" class="btn-secondary" onclick="handleOfferClick('hub'); return false;">
-          <i class="fas fa-link"></i> Smartlink Hub
-        </a>
+        <a href="#" class="btn-primary">Explore offers</a>
+        <a href="#" class="btn-secondary">Smart link hub</a>
       </div>
       <div class="stats">
         <div class="stat-item"><h3>$2.8M+</h3><p>paid to publishers</p></div>
@@ -651,156 +523,52 @@
         <div class="stat-item"><h3>4.9</h3><p>community rating</p></div>
       </div>
     </div>
-    <div class="hero-image"></div> <!-- নতুন ইমেজ এখানে লোড হবে -->
+    <div class="hero-image"></div> <!-- নতুন ইমেজ -->
   </section>
 
   <!-- brands -->
   <section class="brands">
     <p>TRUSTED BY LEADING CPA NETWORKS</p>
     <div class="brand-logos">
-      <a href="#" onclick="handleOfferClick('maxbounty'); return false;"><span>MAXBOUNTY</span></a>
-      <a href="#" onclick="handleOfferClick('cpalead'); return false;"><span>CPALEAD</span></a>
-      <a href="#" onclick="handleOfferClick('cpagrip'); return false;"><span>CPAGRIP</span></a>
-      <a href="#" onclick="handleOfferClick('adsterra'); return false;"><span>ADSTERRA</span></a>
-      <a href="#" onclick="handleOfferClick('adwork'); return false;"><span>ADWORK</span></a>
+      <a href="#"><span>MAXBOUNTY</span></a>
+      <a href="#"><span>CPALEAD</span></a>
+      <a href="#"><span>CPAGRIP</span></a>
+      <a href="#"><span>ADSTERRA</span></a>
+      <a href="#"><span>ADWORK</span></a>
     </div>
   </section>
 
-  <!-- value cards (all clickable for money) -->
+  <!-- value proposition -->
   <section class="value-prop">
     <div class="section-label">WHY PUBLISHERS CHOOSE PAWLEAD</div>
     <h2>Optimized for dog & pet vertical — USA/CAN traffic converts</h2>
     <div class="value-grid">
-      <div class="value-card" onclick="handleOfferClick('maxbounty')">
-        <div class="value-icon">💰</div>
-        <h3>MaxBounty & more</h3>
-        <p>Direct integration with 10+ smartlink partners.</p>
-      </div>
-      <div class="value-card" onclick="handleOfferClick('smartlink')">
-        <div class="value-icon">🎯</div>
-        <h3>Geo‑targeted smartlinks</h3>
-        <p>USA/CAN optimized campaigns – highest EPC.</p>
-      </div>
-      <div class="value-card" onclick="handleOfferClick('funnels')">
-        <div class="value-icon">📊</div>
-        <h3>14 ready‑made funnels</h3>
-        <p>Turn pet owners into CPA conversions on autopilot.</p>
-      </div>
+      <div class="value-card"><div class="value-icon">💰</div><h3>MaxBounty & more</h3><p>Direct integration with 10+ smartlink partners.</p></div>
+      <div class="value-card"><div class="value-icon">🎯</div><h3>Geo‑targeted smartlinks</h3><p>USA/CAN optimized campaigns – highest EPC.</p></div>
+      <div class="value-card"><div class="value-icon">📊</div><h3>14 ready‑made funnels</h3><p>Turn pet owners into CPA conversions.</p></div>
     </div>
   </section>
 
-  <!-- features (all clickable) -->
+  <!-- features -->
   <section class="features">
     <div class="section-label">MONETIZATION FEATURES</div>
     <h2>Designed for high‑converting pet traffic</h2>
     <div class="features-grid">
-      <div class="feature-item" onclick="handleOfferClick('rotator')">
-        <div class="feature-icon">🔗</div>
-        <div class="feature-text">
-          <h4>Smart.link rotator</h4>
-          <p>MaxBounty → CPALead → Adsterra fallback. Maximize fill rate.</p>
-        </div>
-      </div>
-      <div class="feature-item" onclick="handleOfferClick('usa')">
-        <div class="feature-icon">🇺🇸</div>
-        <div class="feature-text">
-          <h4>USA/CAN locked content</h4>
-          <p>Gate dog guides with geo‑targeted CPA offers.</p>
-        </div>
-      </div>
-      <div class="feature-item" onclick="handleOfferClick('mobile')">
-        <div class="feature-icon">📱</div>
-        <div class="feature-text">
-          <h4>Mobile‑first funnels</h4>
-          <p>Optimized for smartphone dog owner demographics.</p>
-        </div>
-      </div>
-      <div class="feature-item" onclick="handleOfferClick('integrated')">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-text">
-          <h4>AdWork & CPAGrip</h4>
-          <p>Native banners, content locking for pet niche.</p>
-        </div>
-      </div>
+      <div class="feature-item"><div class="feature-icon">🔗</div><div class="feature-text"><h4>Smart.link rotator</h4><p>MaxBounty → CPALead → Adsterra fallback.</p></div></div>
+      <div class="feature-item"><div class="feature-icon">🇺🇸</div><div class="feature-text"><h4>USA/CAN locked content</h4><p>Gate dog guides with geo‑targeted offers.</p></div></div>
+      <div class="feature-item"><div class="feature-icon">📱</div><div class="feature-text"><h4>Mobile‑first funnels</h4><p>Optimized for smartphone users.</p></div></div>
+      <div class="feature-item"><div class="feature-icon">⚡</div><div class="feature-text"><h4>AdWork & CPAGrip</h4><p>Native banners for pet niche.</p></div></div>
     </div>
   </section>
 
-  <!-- steps (all clickable) -->
+  <!-- how it works -->
   <section class="how-it-works">
     <div class="section-label">SIMPLE 3‑STEP MONETIZATION</div>
     <h2>From traffic to revenue</h2>
     <div class="steps">
-      <a href="#" class="step" onclick="handleOfferClick('step1'); return false;">
-        <div class="step-number">1</div>
-        <h4>Choose networks</h4>
-        <p>Connect MaxBounty, CPALead, or use our smartlink.</p>
-      </a>
-      <a href="#" class="step" onclick="handleOfferClick('step2'); return false;">
-        <div class="step-number">2</div>
-        <h4>Embed smart links</h4>
-        <p>Replace any resource link with your CPA offer.</p>
-      </a>
-      <a href="#" class="step" onclick="handleOfferClick('step3'); return false;">
-        <div class="step-number">3</div>
-        <h4>Watch conversions</h4>
-        <p>USA/CAN visitors complete surveys → you earn.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- resources - smartlink cards -->
-  <section class="resources">
-    <div class="section-label">CPA SMART LINKS (CLICK ANY = ROTATOR)</div>
-    <h2>14 high‑converting pet offers</h2>
-    <div class="resources-grid">
-      <div class="resource-card" onclick="handleOfferClick('food')">
-        <div class="resource-icon">🍖</div>
-        <h4>Dog food sampler</h4>
-        <p>Free trial (USA/CAN) – Adsterra #1.</p>
-        <span class="resource-link">Get smartlink →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('insurance')">
-        <div class="resource-icon">🩺</div>
-        <h4>Pet insurance</h4>
-        <p>Zip submit, high backend.</p>
-        <span class="resource-link">Lock now →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('training')">
-        <div class="resource-icon">🐕‍🦺</div>
-        <h4>Training course</h4>
-        <p>Email submit (Adsterra).</p>
-        <span class="resource-link">Convert →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('cbd')">
-        <div class="resource-icon">🧘</div>
-        <h4>CBD for dogs</h4>
-        <p>Health survey (CPAGrip).</p>
-        <span class="resource-link">Smartlink →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('toys')">
-        <div class="resource-icon">🦴</div>
-        <h4>Chew toys</h4>
-        <p>Email + zip (CPAGrip).</p>
-        <span class="resource-link">Use link →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('vet')">
-        <div class="resource-icon">🏥</div>
-        <h4>24/7 vet chat</h4>
-        <p>Leadgen – CrakRevenue.</p>
-        <span class="resource-link">Gate content →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('grooming')">
-        <div class="resource-icon">🧼</div>
-        <h4>Grooming kit</h4>
-        <p>Free+shipping (MaxBounty).</p>
-        <span class="resource-link">Rotate →</span>
-      </div>
-      <div class="resource-card" onclick="handleOfferClick('adopt')">
-        <div class="resource-icon">📸</div>
-        <h4>Adopt a pet</h4>
-        <p>Donation/email (CPALead).</p>
-        <span class="resource-link">Smartlink →</span>
-      </div>
+      <div class="step"><div class="step-number">1</div><h4>Choose networks</h4><p>Connect MaxBounty, CPALead, or use smartlink.</p></div>
+      <div class="step"><div class="step-number">2</div><h4>Embed smart links</h4><p>Replace any link with CPA offer.</p></div>
+      <div class="step"><div class="step-number">3</div><h4>Watch conversions</h4><p>USA/CAN visitors complete surveys.</p></div>
     </div>
   </section>
 
@@ -808,9 +576,7 @@
   <section class="cta-section">
     <h2>Start monetizing your dog traffic today</h2>
     <p>14 smartlinks • MaxBounty • CPALead • CPAGrip • Adsterra • AdWork</p>
-    <a href="#" class="cta-white" onclick="handleOfferClick('cta'); return false;">
-      <i class="fas fa-bolt"></i> Get your smartlink hub →
-    </a>
+    <a href="#" class="cta-white">Get your smartlink hub →</a>
   </section>
 
   <!-- footer -->
@@ -822,54 +588,24 @@
       <div class="service-item"><i class="fas fa-clock"></i><span>24/7 Smartlinks</span></div>
     </div>
     <div class="footer-main">
-      <div class="footer-column">
-        <h4>Networks</h4>
-        <a href="#" onclick="handleOfferClick('maxbounty'); return false;">MaxBounty</a>
-        <a href="#" onclick="handleOfferClick('cpalead'); return false;">CPALead</a>
-        <a href="#" onclick="handleOfferClick('cpagrip'); return false;">CPAGrip</a>
-        <a href="#" onclick="handleOfferClick('adsterra'); return false;">Adsterra</a>
-      </div>
-      <div class="footer-column">
-        <h4>Resources</h4>
-        <a href="#" onclick="handleOfferClick('guide'); return false;">Smartlink Guide</a>
-        <a href="#" onclick="handleOfferClick('geo'); return false;">Geo-Targeting</a>
-        <a href="#" onclick="handleOfferClick('funnels'); return false;">CPA Funnels</a>
-      </div>
-      <div class="footer-column">
-        <h4>Company</h4>
-        <a href="#" onclick="handleOfferClick('about'); return false;">About Us</a>
-        <a href="#" onclick="handleOfferClick('privacy'); return false;">Privacy</a>
-        <a href="#" onclick="handleOfferClick('contact'); return false;">Contact</a>
-      </div>
-      <div class="footer-column">
-        <h4>Community</h4>
-        <a href="#" onclick="handleOfferClick('forums'); return false;">Forums</a>
-        <a href="#" onclick="handleOfferClick('blog'); return false;">Blog</a>
-        <a href="#" onclick="handleOfferClick('discord'); return false;">Discord</a>
-      </div>
+      <div class="footer-column"><h4>Networks</h4><a href="#">MaxBounty</a><a href="#">CPALead</a><a href="#">CPAGrip</a><a href="#">Adsterra</a></div>
+      <div class="footer-column"><h4>Resources</h4><a href="#">Smartlink Guide</a><a href="#">Geo-Targeting</a><a href="#">CPA Funnels</a></div>
+      <div class="footer-column"><h4>Company</h4><a href="#">About Us</a><a href="#">Privacy</a><a href="#">Contact</a></div>
+      <div class="footer-column"><h4>Community</h4><a href="#">Forums</a><a href="#">Blog</a><a href="#">Discord</a></div>
     </div>
     <div class="social-footer">
-      <a href="#" onclick="handleOfferClick('fb'); return false;"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" onclick="handleOfferClick('tw'); return false;"><i class="fab fa-twitter"></i></a>
-      <a href="#" onclick="handleOfferClick('ig'); return false;"><i class="fab fa-instagram"></i></a>
-      <a href="#" onclick="handleOfferClick('wa'); return false;"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
     </div>
     <div class="footer-copyright">
-      <div class="copyright-text">© 2026 <span>PawLead.com</span> Auto Money Mode Active</div>
+      <div class="copyright-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+      <div class="copyright-text">© 2026 <span>PawLead.com</span> All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Auto popunder on page load (Adsterra already loaded above) -->
-  <script>
-    // Additional auto redirect for USA visitors (already handled above)
-    // This is just a backup
-    setTimeout(function() {
-      // Check if we should auto redirect to smartlink (30% chance)
-      if (Math.random() < 0.3) {
-        var smartlink = getSmartlink();
-        window.open(smartlink, '_blank');
-      }
-    }, 8000); // after 8 seconds
-  </script>
+  <!-- Only one tracking script at bottom for better performance -->
+  <script src="https://evacuateenclose.com/66/22/fc/6622fce1b17507eccbd8bf55d7d9b7b8.js"></script>
 </body>
 </html>
